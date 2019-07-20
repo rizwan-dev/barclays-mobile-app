@@ -45,6 +45,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  static List<String> grideOptions = [ "Account", "Credit Cards", "FD/RD", "Loans",
+  "UPI", "Grab Deals", "Mutual Funds", "Demat", "Forex Cards"];
+  static List<IconData> grideIcons = [ Icons.account_balance, Icons.credit_card, Icons.fiber_dvr, Icons.add_shopping_cart,
+  Icons.border_horizontal, Icons.grade, Icons.account_box, Icons.account_circle, Icons.card_giftcard];
+
   List<Widget> _tabList = [
     Container(
       color: Colors.white,
@@ -53,16 +58,17 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(8.0),
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 5.0,
-        children: List.generate(20, (index) {
+        children: List.generate(9, (int index) {
           return
             Card(
-            color: Colors.white12,
+            color: Color(0xffebe9e7),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Icon(Icons.account_balance),
-                  new Text("Account")
+                  new Icon(grideIcons[index]),
+                  new Padding(padding: EdgeInsets.all(2.0)),
+                  new Text(grideOptions[index], style: TextStyle(color: Colors.black87, fontSize: 15) )
                 ],
               ),
             ),
@@ -73,19 +79,19 @@ class _MyHomePageState extends State<MyHomePage> {
     Container(
       color: Colors.redAccent,
       child: Center(
-        child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
+        child: Text("Coming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
       ),
     ),
     Container(
       color: Colors.lightGreen,
       child: Center(
-          child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
+          child: Text("Coming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
       ),
     ),
     Container(
       color: Colors.yellowAccent,
       child: Center(
-          child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black87, fontSize: 30.0),)
+          child: Text("Coming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black87, fontSize: 30.0),)
       ),
     )
   ];
