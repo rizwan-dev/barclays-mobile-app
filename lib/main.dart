@@ -54,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 5.0,
         children: List.generate(20, (index) {
-          return Card(
+          return
+            Card(
             color: Colors.white12,
             child: Center(
               child: Column(
@@ -64,10 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   new Text("Account")
                 ],
               ),
-//              child: Padding(
-//                padding: const EdgeInsets.all(15.0),
-//                child: Text('Item $index'),
-//              ),
             ),
           );
         }),
@@ -75,12 +72,21 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     Container(
       color: Colors.redAccent,
+      child: Center(
+        child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
+      ),
     ),
     Container(
       color: Colors.lightGreen,
+      child: Center(
+          child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white, fontSize: 30.0),)
+      ),
     ),
     Container(
       color: Colors.yellowAccent,
+      child: Center(
+          child: Text("Comming Soon...", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.black87, fontSize: 30.0),)
+      ),
     )
   ];
 
