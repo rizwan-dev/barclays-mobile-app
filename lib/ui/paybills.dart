@@ -1,4 +1,5 @@
 import 'package:barclays_app/model/paymentdetails.dart';
+import 'package:barclays_app/ui/payment.dart';
 import 'package:flutter/material.dart';
 
 class PaybillsWidget extends StatelessWidget {
@@ -29,6 +30,13 @@ class PaybillsWidget extends StatelessWidget {
                         color: Colors.white))),
             title: Text(payment.payeeName),
             subtitle: Text(payment.payeeAccountNumber),
+            trailing:  Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PaymentPage(payment: payment)));
+            },
           ),
         );
       },
