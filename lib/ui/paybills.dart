@@ -2,6 +2,8 @@ import 'package:barclays_app/model/paymentdetails.dart';
 import 'package:barclays_app/ui/payment.dart';
 import 'package:flutter/material.dart';
 
+import 'dialog/addpayeedialog.dart';
+
 class PaybillsWidget extends StatelessWidget {
   final Color color;
   List payments;
@@ -11,7 +13,27 @@ class PaybillsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     payments = getPayments();
-    return Container(color: color, child: _myListView(context));
+//    return Container(color: color, child: _myListView(context));
+    return new Scaffold(
+        body: Container(color: color, child: _myListView(context)),
+        floatingActionButton: new FloatingActionButton(
+            elevation: 0.0,
+            child: new Icon(
+              Icons.add,
+              size: 50,
+            ),
+            backgroundColor: new Color(0xFFE57373),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => CustomDialog(
+                  title: "Add Payee",
+                  description:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  buttonText: "Okay",
+                ),
+              );
+            }));
   }
 
   Widget _myListView(BuildContext context) {
@@ -30,7 +52,8 @@ class PaybillsWidget extends StatelessWidget {
                         color: Colors.white))),
             title: Text(payment.payeeName),
             subtitle: Text(payment.payeeAccountNumber),
-            trailing:  Icon(Icons.keyboard_arrow_right, color: Colors.black, size: 30.0),
+            trailing: Icon(Icons.keyboard_arrow_right,
+                color: Colors.black, size: 30.0),
             onTap: () {
               Navigator.push(
                   context,
@@ -75,4 +98,8 @@ class PaybillsWidget extends StatelessWidget {
       elevation: 8.0,
       child: Text(payment.payeeName[0],
           style: new TextStyle(fontSize: 34.0, color: Colors.black)));
+
+
 }
+
+
