@@ -71,7 +71,7 @@ class TransferFundWidget extends StatelessWidget {
           payeeName: "Rizwan",
           payeeAccountNumber: "8768767887",
           ifscCode: "SBIN0099001",
-          branch: "NIBM ROAD, KONDWA",
+          branch: "EON ROAD, KHARADI",
           amountTransferred: 2200.00,
           date: "17/08/2019"),
       PaymentDetails(

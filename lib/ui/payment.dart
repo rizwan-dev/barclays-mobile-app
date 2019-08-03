@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 class PaymentPage extends StatelessWidget {
   final PaymentDetails payment;
+  bool _isPayButtonDisabled = false;
 
   PaymentPage({Key key, this.payment}) : super(key: key);
+
+  void _todo() {}
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +59,8 @@ class PaymentPage extends StatelessWidget {
 //                  padding: const EdgeInsets.all(15.0),
                   child: new Table(
                     border: new TableBorder(
-                        horizontalInside: new BorderSide(color: Colors.grey[200], width: 0.5)
-                    ),
+                        horizontalInside: new BorderSide(
+                            color: Colors.grey[200], width: 0.5)),
                     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                     children: [
                       TableRow(children: [
@@ -112,7 +115,6 @@ class PaymentPage extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
-
                             children: <Widget>[
                               Container(
                                   padding: const EdgeInsets.all(15.0),
@@ -208,7 +210,8 @@ class PaymentPage extends StatelessWidget {
                             children: <Widget>[
                               Container(
                                   padding: const EdgeInsets.all(15.0),
-                                  child: new Text(payment.amountTransferred.toString(),
+                                  child: new Text(
+                                      payment.amountTransferred.toString(),
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
@@ -248,13 +251,25 @@ class PaymentPage extends StatelessWidget {
                           ),
                         )
                       ])
-
-
-
                     ],
                   ),
                 ),
-              )
+              ),
+              new Container(
+                  padding: const EdgeInsets.only(top: 30.0),
+                  child: new RaisedButton(
+                    color: Colors.blue,
+                    textColor: Colors.white,
+                    disabledColor: Color(0xffebe9e7),
+                    disabledTextColor: Colors.black12,
+                    padding: EdgeInsets.all(8.0),
+                    splashColor: Colors.blueAccent,
+                    onPressed: _isPayButtonDisabled ? null : () => _todo(),
+                    child: Text(
+                      "PAY",
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ))
             ],
           ),
 //        child: Text("Pay to : " + payment.payeeName,
