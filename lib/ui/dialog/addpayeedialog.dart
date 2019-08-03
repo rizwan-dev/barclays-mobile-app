@@ -1,9 +1,12 @@
 import 'package:barclays_app/model/constant.dart';
+import 'package:barclays_app/model/payeetype.dart';
+import 'package:barclays_app/model/paymentdetails.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog extends StatelessWidget {
   final String title, description, buttonText;
   final Image image;
+  List payments;
 
   CustomDialog({
     @required this.title,
@@ -14,6 +17,7 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    payments = getPayments();
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
@@ -25,59 +29,72 @@ class CustomDialog extends StatelessWidget {
   }
 
   dialogContent(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(
-            top:  Consts.padding,
-            bottom: Consts.padding,
-            left: Consts.padding,
-            right: Consts.padding,
-          ),
-          decoration: new BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(Consts.padding),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 10.0,
-                offset: const Offset(0.0, 10.0),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min, // To make the card compact
-            children: <Widget>[
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              SizedBox(height: 16.0),
-              Text(
-                description,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-              SizedBox(height: 24.0),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // To close the dialog
-                  },
-                  child: Text(buttonText),
-                ),
-              ),
-            ],
-          ),
+    return Container(
+        padding: EdgeInsets.only(
+          bottom: Consts.padding,
+          left: Consts.padding,
+          right: Consts.padding,
         ),
-      ],
+        decoration: new BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(Consts.padding),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10.0,
+              offset: const Offset(0.0, 10.0),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SizedBox(height: 16.0),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22.0,
+              ),
+            ),
+            Container(
+                color: Colors.white,
+                height: 200.0,
+                child: _myListView(context)),
+          ],
+        ));
+  }
+
+  Widget _myListView(BuildContext context) {
+    return ListView.builder(
+      itemCount: payments.length,
+      itemBuilder: (context, index) {
+        PayeeType payeeType = payments[index];
+        return Card(
+          child: ListTile(
+            leading: CircleAvatar(
+                backgroundColor: Colors.white,
+                child:
+                    Icon(payeeType.iconData, size: 40.0, color: Colors.black)),
+            title: Text(payeeType.type),
+            trailing: Icon(Icons.keyboard_arrow_right,
+                color: Colors.black, size: 30.0),
+            onTap: () {},
+          ),
+        );
+      },
     );
+  }
+
+  List getPayments() {
+    return [
+      PayeeType(type: "Axis Bank Payee", iconData: Icons.account_balance),
+      PayeeType(
+          type: "Other Bank Type", iconData: Icons.account_balance_wallet),
+      PayeeType(type: "Mobile Payee(P2P)", iconData: Icons.payment),
+    ];
   }
 }
