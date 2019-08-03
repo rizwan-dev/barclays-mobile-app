@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barclays_app/ui/dashboard.dart';
-import 'package:barclays_app/ui/paybills.dart';
+import 'package:barclays_app/ui/transferfund.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _tabList = [
     DashboardWidget(Colors.white),
-    PaybillsWidget(Colors.white),
+    TransferFundWidget(Colors.white),
     Container(
       color: Colors.lightGreen,
       child: Center(
@@ -72,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
       bottomNavigationBar: TabBar(
         tabs: [
+          Tab( text: 'Home', icon: Icon(Icons.home, size: 20.0) ),
           Tab( text: 'Transfer', icon: Icon(Icons.money_off, size: 20.0) ),
-          Tab( text: 'Pay Bills', icon: Icon(Icons.account_balance_wallet, size: 20.0) ),
           Tab( text: 'Recharge', icon: Icon(Icons.mobile_screen_share, size: 20.0) ),
           Tab( text: 'Apply', icon: Icon(Icons.text_rotation_angleup, size: 20.0) ),
         ],

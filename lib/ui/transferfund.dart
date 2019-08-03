@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'dialog/addpayeedialog.dart';
 
-class PaybillsWidget extends StatelessWidget {
+class TransferFundWidget extends StatelessWidget {
   final Color color;
   List payments;
 
-  PaybillsWidget(this.color);
+  TransferFundWidget(this.color);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,7 @@ class PaybillsWidget extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) => CustomDialog(
                   title: "Add Payee",
-                  description:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  description:"",
                   buttonText: "Okay",
                 ),
               );
@@ -71,21 +70,29 @@ class PaybillsWidget extends StatelessWidget {
       PaymentDetails(
           payeeName: "Rizwan",
           payeeAccountNumber: "8768767887",
+          ifscCode: "SBIN0099001",
+          branch: "NIBM ROAD, KONDWA",
           amountTransferred: 2200.00,
           date: "17/08/2019"),
       PaymentDetails(
-          payeeName: "Rohit",
+          payeeName: "Tasin",
           payeeAccountNumber: "7987868678",
+          ifscCode: "SBIN0077007",
+          branch: "MG ROAD, CAMP",
           amountTransferred: 2400.00,
           date: "15/08/2019"),
       PaymentDetails(
           payeeName: "Omkar",
           payeeAccountNumber: "6876876888",
+          ifscCode: "PNBIN0088002",
+          branch: "DSK ROAD, DHAERI",
           amountTransferred: 12200.00,
           date: "10/08/2019"),
       PaymentDetails(
           payeeName: "Gaurav",
           payeeAccountNumber: "67686878",
+          ifscCode: "PNBIN0066003",
+          branch: "JM ROAD, DECCAN",
           amountTransferred: 1200.00,
           date: "11/08/2019")
     ];
