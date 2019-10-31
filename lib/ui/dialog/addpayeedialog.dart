@@ -10,6 +10,8 @@ class CustomDialog extends StatelessWidget {
   final Image image;
   List payments;
 
+  BuildContext context;
+
   CustomDialog({
     @required this.title,
     @required this.description,
@@ -19,6 +21,7 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     payments = getPayments();
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -86,6 +89,7 @@ class CustomDialog extends StatelessWidget {
                 color: Colors.black, size: 30.0),
             onTap: () {
               if(payeeType.type== "Other Bank Payee"){
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => AddPayeePage()),
